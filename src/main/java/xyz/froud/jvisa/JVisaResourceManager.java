@@ -168,6 +168,20 @@ public class JVisaResourceManager implements AutoCloseable {
         return new JVisaInstrument(this, instrumentHandle, resourceName);
     }
 
+    public JVisaInstrument openInstrument(String resourceName, int openTimeout) throws JVisaException {
+
+        final NativeLongByReference instrumentHandle = new NativeLongByReference();
+
+        final NativeLong errorCode = VISA_LIBRARY.viOpen(RESOURCE_MANAGER_HANDLE,
+                JVisaUtils.stringToByteBuffer(resourceName),
+                new NativeLong(0), // ViAccessMode accessMode - 0 (VI_NULL) for default access mode
+                new NativeLong(openTimeout), // ViUInt32 openTimeout - how long to wait before returning error. Only when the access mode equals locking?
+                instrumentHandle
+        );
+        checkError(errorCode, "viOpen");
+        return new JVisaInstrument(this, instrumentHandle, resourceName);
+    }
+
     /**
      * Search for connected VISA resources (without filtering).
      *

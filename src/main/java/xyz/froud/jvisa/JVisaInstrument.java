@@ -199,7 +199,7 @@ public class JVisaInstrument implements AutoCloseable {
     /**
      * Sends a command to the instrument. No write terminator is added.
      *
-     * @param command the command to send to the instrument
+     * @param bytes the command to send to the instrument
      *
      * @throws JVisaException if the write operation fails
      * @see <a href="https://www.ni.com/docs/en-US/bundle/ni-visa/page/ni-visa/viwrite.html">viWrite</a>
@@ -211,7 +211,7 @@ public class JVisaInstrument implements AutoCloseable {
     /**
      * Sends a command to the instrument. No write terminator is added.
      *
-     * @param command the command to send to the instrument
+     * @param buffer the command to send to the instrument
      *
      * @throws JVisaException if the write operation fails
      * @see <a href="https://www.ni.com/docs/en-US/bundle/ni-visa/page/ni-visa/viwrite.html">viWrite</a>

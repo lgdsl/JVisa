@@ -14,7 +14,7 @@ import xyz.froud.jvisa.SerialStopBits;
 public class SerialPortExample {
 
     public static void main(String[] args) throws JVisaException {
-        final String portName = "COM1";
+        final String portName = "COM8";
         try (JVisaResourceManager resourceManager = new JVisaResourceManager()) {
             try (JVisaInstrument instrument = resourceManager.openInstrument(portName)) {
                 instrument.setSerialBaudRate(9600);
